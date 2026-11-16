@@ -1,5 +1,8 @@
 import pytest
 from app import get_api_key, order_total
+def test_order_total_rejects_zero_quantity():
+    with pytest.raises(ValueError):
+        order_total(100, 0)
 def test_add_tax():
     from app import add_tax
     assert add_tax(100, 0.10) == 110
